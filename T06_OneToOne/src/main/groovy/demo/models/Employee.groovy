@@ -26,6 +26,6 @@ class Employee {
     BigDecimal salary
 
     @OneToOne(fetch=LAZY)
-    @JoinColumn(name="ADDRESS_ID")
+//    @JoinColumn(name="ADDRESS_ID")
     Address address
 }
