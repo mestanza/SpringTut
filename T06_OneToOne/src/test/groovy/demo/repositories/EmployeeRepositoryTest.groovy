@@ -10,6 +10,8 @@ import org.springframework.test.context.web.WebAppConfiguration
 
 import javax.transaction.Transactional
 
+import static org.junit.Assert.assertEquals
+
 /**
  * Created by luis on 9/17/15.
  */
@@ -20,17 +22,25 @@ class EmployeeRepositoryTest {
     @Autowired EmployeeRepository er
 
     @Test
-    @Transactional
     void findOne() {
         def employee = er.findOne(1L)
 
-        println employee.address.country
+        assertEquals employee.firstName, 'fname1'
+    }
+
+
+    @Test
+    @Transactional
+    void findOneTransactional() {
+        def employee = er.findOne(1L)
+
+        assertEquals employee.address.country, 'country1'
     }
 
     @Test
     void findOneByAddress_Country() {
-        def emplyee = er.findOneByAddress_Country('country1')
+        def employee = er.findOneByAddress_Country('country1')
 
-        println emplyee.address.country
+        assertEquals employee.address.country, 'country1'
     }
 }

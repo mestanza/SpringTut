@@ -38,24 +38,18 @@ class DemoApplication implements CommandLineRunner {
                 new Employee(
                         firstName: 'fname1',
                         lastName: 'lname1',
-                        salary: new BigDecimal('111')
+                        salary: new BigDecimal('111'),
+                        address: ar.save(new Address(
+                                city: 'city1',
+                                country: 'country1',
+                                street: 'street1',
+                                postalCode: 'postalCode1',
+                                province: 'province1'
+                        ))
                 ),
                 new Employee(firstName: 'fname2', lastName: 'lname2', salary: new BigDecimal('222')),
                 new Employee(firstName: 'fname3', lastName: 'lname3', salary: new BigDecimal('333'))
         ])
-
-        def address1 = ar.save(new Address(
-                        city: 'city1',
-                        country: 'country1',
-                        street: 'street1',
-                        postalCode: 'postalCode1',
-                        province: 'province1',
-                        owner: employees[0]
-                ))
-
-        employees[0].address = address1
-
-        er.save(employees[0])
     }
 
 
